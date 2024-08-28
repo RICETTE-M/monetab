@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragments="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <script src="fontawesome/js/all.js"></script>
+    <title>Student page</title>
+</head>
+
+
+<body>
+    <div class="containerPrincipal">
+        <div class="containerGauche">
+            <div class="up">
+                <h1><img id="iconsEtab" src="icons/school-solid.svg" alt="">Mon Etab</h1>
+                <div class="separateur"></div>
+                <hr>
+                <ul>
+                    <li><img src="fontawesome/svgs/solid/square-poll-horizontal.svg" alt=""><a th:href="@{/index}">Tableau de bord</a></li>
+                    <li><img src="fontawesome/svgs/solid/user-large-slash.svg" alt=""><a th:href="@{/students}">Élèves</a></li>
+                    <li><img src="fontawesome/svgs/solid/person-chalkboard.svg" alt=""><a th:href="@{/teachers}">Professeurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/user.svg" alt=""><a th:href="@{/users}">Utilisateurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/chart-pie.svg" alt=""><a th:href="@{/reports}">Rapport</a></li>
+                </ul>
+            </div>
+            <div class="separateur" id="separateur"></div>
+            <ul>
+                <a th:href="@{index}"> <li id="logout"><img src="fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li></a>
+            </ul>
+        </div>
+
+
+        <main class="dashboard">
+            <h2>Tableau de bord</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Nombre d'élève</h3>
+                    <p id="studentCount">128 100</p>
+                </div>
+                <div class="card">
+                    <h3>Nombre de professeur</h3>
+                    <p id="teacherCount">128 100</p>
+                </div>
+                <div class="card">
+                    <h3>Nombre d'utilisateur</h3>
+                    <p id="userCount">128 100</p>
+                </div>
+                <div class="card">
+                    <h3>Élève par genre</h3>
+                    <canvas id="genderChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/script.js"></script>
+</body>
+</html>

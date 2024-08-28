@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="css/ajoutElev.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <script src="fontawesome/js/all.js"></script>
+    <title>Professeur page</title>
+</head> 
+<body>
+    <div class="containerPrincipal">
+        <div class="containerGauche">
+            <div class="up">
+                <h1><img id="iconsEtab" src="icons/school-solid.svg" alt="">Mon Etab</h1>
+                <div class="separateur"></div>
+                <hr>
+                <ul>
+                    <li><img src="fontawesome/svgs/solid/square-poll-horizontal.svg" alt=""><a th:href="@{/dashboard}">Tableau de bord</a></li>
+                    <li><img src="fontawesome/svgs/solid/user-large-slash.svg" alt=""><a th:href="@{/students}">Élèves</a></li>
+                    <li><img src="fontawesome/svgs/solid/person-chalkboard.svg" alt=""><a th:href="@{/teachers}">Professeurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/user.svg" alt=""><a th:href="@{/users}">Utilisateurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/chart-pie.svg" alt=""><a th:href="@{/reports}">Rapport</a></li>
+                </ul>
+            </div>
+            <div class="separateur" id="separateur"></div>
+            <ul>
+                <a th:href="@{index}"> <li id="logout"><img src="fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li></a>
+            </ul>
+        </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>Rapport</h2>
+        </div>
+        
+        <!-- Conteneur des formulaires -->
+        <div class="form-container">
+            <form id="studentForm">
+               
+
+            <form id="studentForm">
+                <label for="classe">Sélectionner une option:</label>
+                <select id="classe" name="classe" required>
+                    <option value="listElev">Liste des Élèves</option>
+                    <option value="listProf">Liste des Professeurs</option>
+                    <option value="listUtili">Liste des Utilisateurs</option>
+                </select>
+            </form>
+            </form>
+        </div>
+
+
+        <!-- Boutons en bas -->
+        <div class="form-buttons">
+            <button type="button" class="cancel-btn">Annuler</button>
+            <button type="submit" class="save-btn">Enregistrer</button>
+        </div>
+    </div>
+    </div>
+    <script src="JS/AjoutElev.js"></script>
+</body>
+</html>

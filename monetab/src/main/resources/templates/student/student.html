@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <script src="fontawesome/js/all.js"></script>
+    <title>Student page</title>
+</head> 
+<body>
+    <div class="containerPrincipal">
+
+
+
+
+        <div class="containerGauche">
+            <div class="up">
+                <h1><img id="iconsEtab" src="icons/school-solid.svg" alt="">Mon Etab</h1>
+                <div class="separateur"></div>
+                <hr>
+                <ul>
+                    <li><img src="fontawesome/svgs/solid/square-poll-horizontal.svg" alt=""><a th:href="@{/dashboard}">Tableau de bord</a></li>
+                    <li><img src="fontawesome/svgs/solid/user-large-slash.svg" alt=""><a th:href="@{/students}">Élèves</a></li>
+                    <li><img src="fontawesome/svgs/solid/person-chalkboard.svg" alt=""><a th:href="@{/teachers}">Professeurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/user.svg" alt=""><a th:href="@{/users}">Utilisateurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/chart-pie.svg" alt=""><a th:href="@{/reports}">Rapport</a></li>
+                </ul>
+            </div>
+            <div class="separateur" id="separateur"></div>
+            <ul>
+                <a th:href="@{index}">  <li id="logout"><img src="fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li></a>
+            </ul>
+        </div>
+        <div class="containerDroit">
+            <div class="enTete">
+                <h2>Élèves(<span th:text="${students.size()}"></span>)</h2>
+                <ul>
+                    <a th:href="@{/students/addstudent}"> <li><img src="fontawesome/svgs/solid/plus.svg" alt="">Nouvel élève</li></a>
+                </ul>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Genre</th>
+                        <th>Classe</th>
+                        <th>Matricule</th>
+                        <th>Âge</th>
+                        <th>Téléphone</th>
+                        <th>Ville</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student:${students}">
+                        <td th:text="${student.getLast_name}"></td>
+                        <td th:text="${student.getFirst_name()}">></td>
+                        <td>M</td>
+                        <td>Terminale</td>
+                        <td th:text="${student.getMatricule()}">></td>
+                        <td>25</td>
+                        <td>0123456789</td>
+                        <td th:text="${student.getVille()}"></td>
+                        <td>
+                            <button class="modifier" style="background-color: coral;" ><a th:href="@{form}">Modifier</a></button>
+                            <button class="supprimer" style="background-color: crimson;" onclick="afficherMessage()">Supprimer</button>
+                        
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+        <script src="JS/messageAlert.js"></script>
+    </body>
+    </html>
+    

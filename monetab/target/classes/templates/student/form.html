@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/student.css}">
+    <link rel="stylesheet"  th:href="@{/css/ajoutElev.css}">
+
+    <link rel="stylesheet" th:href="@{/fontawesome/css/all.css}" >
+    <link rel="stylesheet" th:href="@{/fontawesome/js/all.js}" >
+    <title>Student page</title>
+    <script th:src="@{/fontawesome/js/all.js}" ></script>
+
+    <title>Student page</title>
+</head>
+<body>
+    <div class="containerPrincipal">
+        <div class="containerGauche">
+            <div class="up">
+                <h1><img id="iconsEtab" src="icons/school-solid.svg" alt="">Mon Etab</h1>
+                <div class="separateur"></div>
+                <hr>
+                <ul>
+                    <li><img src="fontawesome/svgs/solid/square-poll-horizontal.svg" alt=""><a  th:href="@{/dashboard}">Tableau de bord</a></li>
+                    <li><img src="fontawesome/svgs/solid/user-large-slash.svg" alt=""><a  th:href="@{/students}">Élèves</a></li>
+                    <li><img src="fontawesome/svgs/solid/person-chalkboard.svg" alt=""><a  th:href="@{/teachers}">Professeurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/user.svg" alt=""><a  th:href="@{/users}">Utilisateurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/chart-pie.svg" alt=""><a  th:href="@{/reports}">Rapport</a></li>
+                </ul>
+            </div>
+            <div class="separateur" id="separateur"></div>
+
+            <li id="logout">
+                <a th:href="@{/logout}">
+                    <img src="fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion
+                </a>
+            </li>
+
+        </div>
+
+    <div class="main-content">
+        <div class="header">
+
+            <a th:href="@{/students}" class="back-button">Retour</a>
+            <h2>Ajouter un élève</h2>
+        </div>
+
+        <!-- Conteneur des formulaires -->
+        <div class="form-container">
+            <form id="addStudentForm" th:object="${student}" th:action="@{/students/saveStudent}" method="post">
+                <input th:field="*{id}" hidden="hidden">
+                <label for="nom">Nom:</label>
+                <input th:field="*{first_name}" type="text" id="nom" name="nom" required>
+                <label for="prenom">Prénom:</label>
+                <input th:field="*{last_name}" type="text" id="prenom" name="prenom" required>
+
+                <label>Sexe:</label>
+                <input th:field="*{genre}" type="radio" id="homme" value="Homme" required>
+                <label for="homme">Homme</label>
+                <input th:field="*{genre}" type="radio" id="femme" value="Femme" required>
+                <label for="femme">Femme</label>
+
+
+                <label for="matricule">Matricule:</label>
+                <input th:field="*{matricule}" type="text" id="matricule" name="matricule" required>
+
+                <label for="dateNaissance">Date de naissance:</label>
+                <input th:field="*{date_naissance}" type="date" id="dateNaissance" name="dateNaissance" required>
+
+                <label for="classe">Sélectionner une classe:</label>
+                <select th:field="*{classe}" id="classe" name="classe" required>
+                    <option value="1ère">1ère</option>
+                    <option value="2nde">2nde</option>
+                    <option value="3ème">3ème</option>
+                    <option value="4ème">4ème</option>
+                    <option value="5ème">5ème</option>
+                    <option value="6ème">6ème</option>
+                </select>
+
+                <label for="telephone">Téléphone:</label>
+                <input th:field="*{telephone}" type="tel" id="telephone" name="telephone" required>
+
+                <label for="email">Email:</label>
+                <input th:field="*{email}" type="email" id="email" name="email" required>
+
+
+                <label for="ville">Ville:</label>
+                <input th:field="*{ville}" type="text" id="ville" name="ville" required>
+
+
+
+        <!-- Boutons en bas -->
+        <div class="form-buttons">
+            <button type="button" class="cancel-btn">Annuler</button>
+            <button type="submit" class="save-btn">Enregistrer</button>
+        </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script th:href="@{JS/ajoutElev.js}"></script>
+</body>
+</html>

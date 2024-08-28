@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/student.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <script src="fontawesome/js/all.js"></script>
+    <title>Professeurs page</title>
+</head> 
+<body>
+    <div class="containerPrincipal">
+        <div class="containerGauche">
+            <div class="up">
+                <h1><img id="iconsEtab" src="icons/school-solid.svg" alt="">Mon Etab</h1>
+                <div class="separateur"></div>
+                <hr>
+                <ul>
+                    <li><img src="fontawesome/svgs/solid/square-poll-horizontal.svg" alt=""><a th:href="@{/dashboard}">Tableau de bord</a></li>
+                    <li><img src="fontawesome/svgs/solid/user-large-slash.svg" alt=""><a th:href="@{/students}">Élèves</a></li>
+                    <li><img src="fontawesome/svgs/solid/person-chalkboard.svg" alt=""><a th:href="@{/teachers}">Professeurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/user.svg" alt=""><a th:href="@{/users}">Utilisateurs</a></li>
+                    <li><img src="fontawesome/svgs/solid/chart-pie.svg" alt=""><a th:href="@{/reports}">Rapport</a></li>
+                </ul>
+            </div>
+            <div class="separateur" id="separateur"></div>
+            <ul>
+                <a th:href="@{index}">  <li id="logout"><img src="fontawesome/svgs/solid/right-from-bracket.svg" alt="">Déconnexion</li></a>
+            </ul>
+        </div>
+        <div class="containerDroit">
+            <div class="enTete">
+                <h2>Professeurs(<span th:text="${teachers.size()}"></span>)</h2>
+                <ul>
+                    <a th:href="@{/teachers/add}"> <li><img src="fontawesome/svgs/solid/plus.svg" alt="">Nouveau Professeur</li></a>
+                </ul>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Matière</th>
+
+                        <th>email</th>
+                        <th>Téléphone</th>
+                        <th>Genre</th>
+                        <th>Ville</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="teacher:${teachers}">
+                        <td th:text="${teacher.first_name}"></td>
+                        <td th:text="${teacher.last_name}"></td>
+                        <td th:text="${teacher.matiere}"></td>
+
+                        <td th:text="${teacher.email}"></td>
+                        <td th:text="${teacher.telephone}"></td>
+                        <td th:text="${teacher.genre}"></td>
+                        <td th:text="${teacher.ville}"></td>
+
+                        <td>
+                            <a th:href="@{|/teachers/${teacher.id}|}">
+                                <button class="modifier" style="background-color: coral;">Modifier</button>
+                            </a>
+
+                            <button class="supprimer" style="background-color: crimson;" onclick="afficherMessage()">Supprimer</button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+        <script src="JS/messageAlert.js"></script>
+
+    </body>
+    </html>
+    
